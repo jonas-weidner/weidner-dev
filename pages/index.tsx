@@ -2,6 +2,7 @@ import Head from 'next/head'
 // @ts-ignore
 import styles from '../styles/Home.module.css'
 import { FC } from "react";
+import { motion } from "framer-motion";
 
 const Home: FC = () => {
     return (
@@ -16,22 +17,53 @@ const Home: FC = () => {
             </Head>
 
             <main className={styles.main}>
-                <h1 className={styles.title}>
-                    Jonas
-                </h1>
-                <div className={styles.lastName}>
+                <motion.div
+                    initial={{ x: -500 }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                    }}
+                >
+                    <h1 className={styles.title}>
+                        Jonas
+                    </h1>
+                </motion.div>
+
+                <motion.div
+                    className={styles.lastName}
+                    initial={{ x: 500 }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                    }}
+                >
                     <h1 className={styles.title}>
                         Weidner
                     </h1>
-                </div>
+                </motion.div>
 
                 <div className={styles.photoAndDescription}>
                     <img className={styles.profilePhoto} src="/profile-photo.jpg" alt="Jonas Weidner"/>
 
                     <div className={styles.descriptionWrapper}>
-                        <p className={styles.description}>
-                            Developer<br/>Entrepreneur<br/>Tech Enthusiast
-                        </p>
+                        <motion.div
+                            className={styles.lastName}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 260,
+                                damping: 20
+                            }}
+                        >
+                            <p className={styles.description}>
+                                Developer<br/>Entrepreneur<br/>Tech Enthusiast
+                            </p>
+                        </motion.div>
                         <div className={styles.socials}>
                             <a href="https://www.github.com/jonas-weidner" target="_blank">
                                 <img src="/github.svg" alt="GitHub"/>
